@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Welcome to my site
+{% endblock %}
+
+{% block content %}
+    {% for blog in blogs.all %}
+        标题：<a href="/blog/{{ blog.id }}">{{ blog.title }}</a>
+        内容：{{ blog.content }}
+        <br>
+    {% endfor %}
+    <hr>
+    一共有{{ blogs.count }}篇文章<br>
+{% endblock %}
+

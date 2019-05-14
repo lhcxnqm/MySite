@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ data.type_name }}
+{% endblock %}
+
+{% block content %}
+    {% for i in blog.all %}
+        <h2>{{ i.title }}</h2>
+        作者：{{ i.author }}<br>
+        创建时间：{{ i.create_time }}<br>
+        内容：{{ i.content }}<br>
+    {% endfor %}
+    <hr>
+    一共有{{ blog.count }}篇文章<br>
+    <a href="..">回到主页</a>
+{% endblock %}

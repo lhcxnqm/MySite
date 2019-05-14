@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    详细界面
+{% endblock %}
+
+{% block content %}
+    <h2>{{ data.title }}</h2>
+    <p>作者：{{ data.author }}</p>
+    <!--使用如下语句可以关联外键-->
+    <p>类型：<a href="../type/{{ data.blog_type_id }}">{{ data.blog_type }}</a></p>
+    <p>创建日期：{{ data.create_time }}</p>
+    内容：{{ data.content }}
+    <hr>
+    <a href="..">回到主页</a>
+{% endblock %}
