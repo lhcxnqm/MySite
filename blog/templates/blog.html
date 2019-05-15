@@ -18,7 +18,8 @@
                                 <span class="glyphicon glyphicon-tag"></span><a href="type/{{ blog.blog_type_id }}">{{ blog.blog_type }}</a>
                                 &nbsp;<span class="glyphicon glyphicon-time"></span>{{ blog.create_time }}
                             </p>
-                            {{ blog.content }}
+                            {# 显示内容的一部分并通过safe使其显示后台编辑内容的真实排版，去除标签的显示 #}
+                            {{ blog.short_content |safe }}
                             <hr>
                         {% endfor %}
 
@@ -58,8 +59,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">博客分类</div>
                     <div class="panel-body">
-                        {% for type in blogtype.all %}
-                            <li><a href="type/{{ type.id }}">{{ type.type_name }}</a></li>
+                        {% for type in blogtype %}
+                            <li><a href="type/{{ type.id }}">{{ type.type_name }}</a>（{{ type.type_count }}）</li>
                         {% endfor %}
                     </div>
                 </div>

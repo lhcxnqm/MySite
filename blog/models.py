@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class BlogType(models.Model):
@@ -11,13 +12,16 @@ class BlogType(models.Model):
 
 class Blog(models.Model):
     title=models.CharField(max_length=50)
-    content=models.TextField(max_length=300)
+    content=RichTextUploadingField()
     author=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     blog_type=models.ForeignKey(BlogType,on_delete=models.DO_NOTHING)
     create_time=models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return self.title
+
+    def short_content(self):
+        return self.content[:20]+'...'
 
     class Meta:
         ordering=['-create_time']

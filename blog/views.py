@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Blog,BlogType
 from django.core.paginator import Paginator
+from django.db.models import Count
 
 # Create your views here.
 def show(request):
@@ -9,7 +10,9 @@ def show(request):
     page_num=request.GET.get('page',1)  #get请求获取url页面的参数
     page_of_blogs=paginator.get_page(page_num)  #这里还未理解，以后有空回来搞
 
-    blogtype=BlogType.objects
+    #获取博客分类栏对应类的数量
+    blogtype=BlogType.objects.annotate(type_count=Count('blog'))
+    'blogtype=BlogType.objects'
     return render(request, "blog.html", {'blogs':page_of_blogs, 'blogtype':blogtype})
 
 def detail(request,blog_id):

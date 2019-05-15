@@ -15,7 +15,7 @@
                             <h2><a href="../{{ i.id }}">{{ i.title }}</a></h2>
                             作者：{{ i.author }}<br>
                             发表日期：{{ i.create_time }}<br>
-                            内容：{{ i.content }}<br>
+                            内容：{{ i.short_content|safe }}<br>
                             <hr>
                         {% endfor %}
 

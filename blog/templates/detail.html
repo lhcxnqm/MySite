@@ -8,11 +8,12 @@
         <div class="panel panel-default">
             <div class="panel panel-heading">{{ data.title }}<br></div>
             <div class="panel panel-body">
-                <p>作者：{{ data.author }}</p>
+                作者：{{ data.author }}&nbsp;&nbsp;
                 <!--使用如下语句可以关联外键-->
-                <p>类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a></p>
-                <p>创建日期：{{ data.create_time }}</p>
-                内容：{{ data.content }}
+                类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a>&nbsp;&nbsp;
+                发表日期：{{ data.create_time }}
+                <br><br>
+                内容：{{ data.content|safe }}
             </div>
         </div>
         <hr>
