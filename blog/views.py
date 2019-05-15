@@ -10,7 +10,7 @@ def show(request):
     page_of_blogs=paginator.get_page(page_num)  #这里还未理解，以后有空回来搞
 
     blogtype=BlogType.objects
-    return render(request,"blog.html",{'blogs':page_of_blogs,'blogtype':blogtype})
+    return render(request, "blog.html", {'blogs':page_of_blogs, 'blogtype':blogtype})
 
 def detail(request,blog_id):
     data=Blog.objects.get(id=blog_id)
@@ -19,4 +19,9 @@ def detail(request,blog_id):
 def blog_type(request,blog_type_id):
     data=BlogType.objects.get(id=blog_type_id)
     blog=Blog.objects.filter(blog_type=data)
-    return render(request,"blog_type.html",{'data':data,'blog':blog})
+
+    paginator = Paginator(blog.all(), 5)  # 每5篇进行分页
+    page_num = request.GET.get('page', 1)  # get请求获取url页面的参数
+    page_of_blogs = paginator.get_page(page_num)  # 这里还未理解，以后有空回来搞
+
+    return render(request,"blog_type.html",{'data':data,'blog':blog,'blogs':page_of_blogs})

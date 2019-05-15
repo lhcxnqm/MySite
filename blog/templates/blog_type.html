@@ -6,6 +6,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            {#    博客类型列表左边区域占8列    #}
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">{{ data.type_name }}（一共有{{ blog.count }}篇文章）<br></div>
@@ -17,9 +18,39 @@
                             内容：{{ i.content }}<br>
                             <hr>
                         {% endfor %}
+
+                        {#  分页的控制  #}
+                        <div style="text-align: center">
+                          <ul class="pagination">
+                            <li>
+                                {% if blogs.has_previous %}
+                                    <a href="?page={{ blogs.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                            {% for page_num in blogs.paginator.page_range %}
+                                {% if page_num == blogs.number %}
+                                    <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            <li>
+                                {% if blogs.has_next %}
+                                    <a href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                          </ul>
+                        <p>一共有{{ blogs.paginator.count }}篇文章，当前第{{ blogs.number }}页，共{{ blogs.paginator.num_pages }}页</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
+            {#   博客分类右边区域占4列     #}
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">博客分类</div>

@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row">
 
-            {#      左边区域占8列      #}
+            {#      博客总列表左边区域占8列      #}
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">博客列表(一共有{{ blogs.paginator.count }}篇文章)</div>
+                    <div class="panel-heading">博客列表</div>
                     <div class="panel-body">
                         {% for blog in blogs.object_list %}
                             <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
@@ -23,6 +23,7 @@
                         {% endfor %}
 
                         {#  分页的控制  #}
+                        <div style="text-align: center">
                           <ul class="pagination">
                             <li>
                                 {% if blogs.has_previous %}
@@ -32,7 +33,11 @@
                                 {% endif %}
                             </li>
                             {% for page_num in blogs.paginator.page_range %}
-                                <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                {% if page_num == blogs.number %}
+                                    <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                {% endif %}
                             {% endfor %}
                             <li>
                                 {% if blogs.has_next %}
@@ -42,11 +47,13 @@
                                 {% endif %}
                             </li>
                           </ul>
+                        <p>一共有{{ blogs.paginator.count }}篇文章，当前第{{ blogs.number }}页，共{{ blogs.paginator.num_pages }}页</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {#   右边区域占4列   #}
+            {#   博客分类右边区域占4列   #}
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">博客分类</div>
