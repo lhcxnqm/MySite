@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}
-    详细界面
-{% endblock %}
+{% block title %}{{ data.title }}{% endblock %}
+{% block nav_blog_active %}active{% endblock %}
 
 {% block content %}
-    <h2>{{ data.title }}</h2>
-    <p>作者：{{ data.author }}</p>
-    <!--使用如下语句可以关联外键-->
-    <p>类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a></p>
-    <p>创建日期：{{ data.create_time }}</p>
-    内容：{{ data.content }}
-    <hr>
-    <a href=".">回到主页</a>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel panel-heading">{{ data.title }}<br></div>
+            <div class="panel panel-body">
+                <p>作者：{{ data.author }}</p>
+                <!--使用如下语句可以关联外键-->
+                <p>类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a></p>
+                <p>创建日期：{{ data.create_time }}</p>
+                内容：{{ data.content }}
+            </div>
+        </div>
+        <hr>
+       <a href="." style="margin: 0 auto;display: block;width: 80px">回到主页</a>
+    </div>
+
 {% endblock %}
