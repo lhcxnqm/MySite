@@ -1,11 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}
-    主页
+{% block title %}主页{% endblock %}
+{% block nav_index_active %}active{% endblock %}
+{% block header %}
+    <link rel="stylesheet" href="/static/blog.css">
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
 {% endblock %}
 
-{% block nav_index_active %}active{% endblock %}
-
 {% block content %}
-    <h3 style="font-size: 200%;position: absolute;left:45%;top:50%">欢迎访问我的网站</h3>
+    <h3>欢迎访问我的网站</h3>
+
+     <!-- 图表容器 DOM -->
+    <div id="container" style="width: 600px;height:400px;"></div>
+    <script>
+        var options = {
+            chart: {type: 'line'},
+            title:{text:null},
+            xAxis: {
+                categories: {{ dates|safe }},
+            },
+            yAxis: {
+                title: { text: '' }
+            },
+            series: [{                              // 数据列
+                name: '访问量统计',                        // 数据列名
+                data: {{ read_nums }}                    // 数据
+            }, ],
+            plotOptions:{
+                line:{
+                    dataLabels:{enabled:true}
+                }
+            }
+        };
+        // 图表初始化函数
+        var chart = Highcharts.chart('container', options);
+    </script>
+
 {% endblock %}

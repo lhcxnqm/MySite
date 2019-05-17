@@ -6,14 +6,17 @@
 {% block content %}
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel panel-heading">{{ data.title }}<br></div>
+            <div class="panel panel-heading" style="text-align: center">{{ data.title }}</div>
             <div class="panel panel-body">
-                作者：{{ data.author }}&nbsp;&nbsp;
-                <!--使用如下语句可以关联外键-->
-                类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a>&nbsp;&nbsp;
-                发表日期：{{ data.create_time }}
-                <br><br>
-                内容：{{ data.content|safe }}
+                <center>
+                    作者：{{ data.author }}&nbsp;&nbsp;
+                    <!--使用如下语句可以关联外键-->
+                    类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a>&nbsp;&nbsp;
+                    发表日期：{{ data.create_time }}&nbsp;&nbsp;
+                    阅读数：{{ data.get_read_num }}
+                </center>
+                <hr>
+                {{ data.content|safe }}
             </div>
         </div>
         <hr>

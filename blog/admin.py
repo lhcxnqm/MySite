@@ -8,4 +8,4 @@ class BlogTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title','author','blog_type','create_time')
+    list_display = ('title','author','get_read_num','blog_type','create_time')

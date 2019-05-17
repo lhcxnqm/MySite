@@ -15,8 +15,9 @@
                         {% for blog in blogs.object_list %}
                             <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
                             <p>
-                                <span class="glyphicon glyphicon-tag"></span><a href="type/{{ blog.blog_type_id }}">{{ blog.blog_type }}</a>
-                                &nbsp;<span class="glyphicon glyphicon-time"></span>{{ blog.create_time }}
+                                <span class="glyphicon glyphicon-tag"><a href="type/{{ blog.blog_type_id }}">{{ blog.blog_type }}</a></span>
+                                &nbsp;<span class="glyphicon glyphicon-time"></span>{{ blog.create_time }}&nbsp;
+                                <span>阅读({{ blog.get_read_num }})</span>
                             </p>
                             {# 显示内容的一部分并通过safe使其显示后台编辑内容的真实排版，去除标签的显示 #}
                             {{ blog.short_content |safe }}

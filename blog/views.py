@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .models import Blog,BlogType
+from blog.models import Blog,BlogType
 from django.core.paginator import Paginator
 from django.db.models import Count
+from MyStatistics.utils import read_statistics_once_read
 
 # Create your views here.
 def show(request):
@@ -17,7 +18,12 @@ def show(request):
 
 def detail(request,blog_id):
     data=Blog.objects.get(id=blog_id)
-    return render(request,"detail.html",{'data':data})
+    # 当访问一次某篇文章的时候，如果cookie不存在则对应的阅读数加1
+    read_cookie_key=read_statistics_once_read(request,data)
+
+    response=render(request,"detail.html",{'data':data})    #响应
+    response.set_cookie(read_cookie_key,'true')  #这里设置cookie，在关闭浏览器之前都存在
+    return response
 
 def blog_type(request,blog_type_id):
     data=BlogType.objects.get(id=blog_type_id)
