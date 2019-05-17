@@ -26,4 +26,5 @@ urlpatterns = [
     path('',views.mysite),
     #这是用来在后台编辑框内添加图片用的
     path('ckeditor',include('ckeditor_uploader.urls')),
+    path('login/',views.login),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #我添加的app
     'blog',
     'MyStatistics',
+    'comment',
 ]
 
 MIDDLEWARE = [

@@ -10,7 +10,7 @@
             <div class="panel panel-body">
                 <center>
                     作者：{{ data.author }}&nbsp;&nbsp;
-                    <!--使用如下语句可以关联外键-->
+                    {#      使用如下语句可以关联外键#}
                     类型：<a href="./type/{{ data.blog_type_id }}">{{ data.blog_type }}</a>&nbsp;&nbsp;
                     发表日期：{{ data.create_time }}&nbsp;&nbsp;
                     阅读数：{{ data.get_read_num }}
@@ -19,6 +19,29 @@
                 {{ data.content|safe }}
             </div>
         </div>
+
+        {#         评论区域的控制 #}
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div style="margin-top: 2em;border: 1px dashed;padding: 2em;">
+                    提交评论区域
+                    {% if user.is_authenticated %}
+                        已登录
+                    {% else %}
+                        未登录
+                        <form action="/login/" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="username">
+                            <input type="password" name="password">
+                            <input type="submit" value="登录">
+                        </form>
+                    {% endif %}
+                </div>
+                <div style="margin-top: 2em;border: 1px dashed;padding: 2em;">评论列表区域</div>
+            </div>
+        </div>
+
+        {#        底部页面跳转#}
         <hr>
        <a href="." style="margin: 0 auto;display: block;width: 80px">回到主页</a>
     </div>
