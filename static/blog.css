@@ -1,9 +1,22 @@
-h3{
+h3.index-title{
     font-size: 200%;
     text-align: center;
     margin-top: 3em;
 }
+h3.comment-area-title{
+    border-bottom: 1px solid #ccc;
+}
 
 div#container{
     margin:0 auto;
+}
+div.comment-area{
+    margin-top: 2em;
+    border: 1px;
+}
+
+a.back_previous{
+    margin: 0 auto;
+    display: block;
+    width: 80px;
 }

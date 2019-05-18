@@ -8,14 +8,14 @@
 {% endblock %}
 
 {% block content %}
-    <h3>欢迎访问我的网站</h3>
+    <h3 class="index-title">欢迎访问我的网站</h3>
 
      <!-- 图表容器 DOM -->
     <div id="container" style="width: 600px;height:400px;"></div>
     <script>
         var options = {
             chart: {type: 'line'},
-            title:{text:null},
+            title:{text:''},
             xAxis: {
                 categories: {{ dates|safe }},
             },

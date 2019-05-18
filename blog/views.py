@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from blog.models import Blog,BlogType
+from comment.models import Comment
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.contrib.contenttypes.models import ContentType
 from MyStatistics.utils import read_statistics_once_read
 
 # Create your views here.
@@ -20,8 +22,11 @@ def detail(request,blog_id):
     data=Blog.objects.get(id=blog_id)
     # 当访问一次某篇文章的时候，如果cookie不存在则对应的阅读数加1
     read_cookie_key=read_statistics_once_read(request,data)
+    #获取评论相关信息
+    blog_content_type=ContentType.objects.get_for_model(data)
+    comments=Comment.objects.filter(content_type=blog_content_type,object_id=blog_id)
 
-    response=render(request,"detail.html",{'data':data})    #响应
+    response=render(request,"detail.html",{'data':data,'comments':comments})    #响应
     response.set_cookie(read_cookie_key,'true')  #这里设置cookie，在关闭浏览器之前都存在
     return response
 

@@ -14,9 +14,10 @@ def login(request):
     username=request.POST.get('username','')
     password=request.POST.get('password','')
     user=auth.authenticate(request,username=username,password=password)
+    referer=request.META.get('HTTP_REFERER','/')    #若登录成功则返回该页面，反之跳到首页
     if user is not None:
         auth.login(request,user)
         #登录成功则跳转到首页
-        return redirect('/')
+        return redirect(referer)
     else:
         return render(request,'error.html',{'message':'用户名或密码不正确'})
