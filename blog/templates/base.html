@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
     {% block header %}{% endblock %}
 </head>
-<body>
+<body background="/media/background01.gif">
     {#  这是用来控制上方导航栏的  #}
     <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -23,7 +23,9 @@
                 <ul class="nav navbar-nav">
                     {#        通过填补block块使得进入某个页面时处于active状态        #}
                     <li class="{% block nav_index_active %}{% endblock %}"><a href="/">首页</a></li>
-                    <li class="{% block nav_blog_active %}{% endblock %}"><a href="/blog/">博客</a></li>
+                    <li class="{% block nav_blog_active %}{% endblock %}"><a href="/blog">博客</a></li>
+                    <li class="{% block nav_login_active %}{% endblock %}"><a href="/login">登录</a></li>
+                    <li class="{% block nav_register_active %}{% endblock %}"><a href="/register">注册</a></li>
                 </ul>
             </div>
         </div>
