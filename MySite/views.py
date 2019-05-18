@@ -5,6 +5,7 @@ from blog.models import Blog
 from django.contrib import auth
 from .forms import LoginForm,RegisterForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 def mysite(request):
     blog_content_type=ContentType.objects.get_for_model(Blog)
@@ -18,7 +19,10 @@ def login(request):
         if login_form.is_valid():
             user=login_form.cleaned_data['user']
             auth.login(request,user)
-            return redirect(request.GET.get('from'))    # 登陆成功则返回到原来的文章页面
+            try:
+                return redirect(request.GET.get('from'))    # 登陆成功则返回到原来的文章页面
+            except:
+                 return redirect('/')  #直接从导航页点击的话登录后跳转到首页
     else:
         login_form=LoginForm()
 
@@ -36,7 +40,10 @@ def register(request):
             #注册成功后进行登录
             user=auth.authenticate(username=username,password=password)
             auth.login(request,user)
-            return redirect(request.GET.get('from'))
+            try:
+                return redirect(request.GET.get('from'))
+            except:
+                return redirect('/')    #从导航栏注册话，注册成功则跳转到首页
     else:
         register_form=RegisterForm()
 
