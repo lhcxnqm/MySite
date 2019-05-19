@@ -17,8 +17,8 @@
                     <div class="panel-heading">博客列表</div>
                     <div class="panel-body">
                         {% for blog in blogs.object_list %}
-                            <div class="pull-right" id="blog_image">
-                                <img src="/media/upload/2019/05/18/caixukun.jpg" class="img-responsive center-block">
+                            <div class="pull-right">
+                                <img src="{{ blog.image.url }}" class="img-responsive center-block" id="blog_image">
                             </div>
                             <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
                             <p>

@@ -17,6 +17,7 @@ class Blog(models.Model,ReadNumExtentMethod):
     author=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     blog_type=models.ForeignKey(BlogType,on_delete=models.DO_NOTHING)
     create_time=models.DateTimeField(default=timezone.now())
+    image=models.ImageField(default='',upload_to='blog_images')
 
     def __str__(self):
         return self.title

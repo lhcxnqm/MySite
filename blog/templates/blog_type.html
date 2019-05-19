@@ -3,6 +3,10 @@
 {% block title %}{{ data.type_name }}{% endblock %}
 {% block nav_blog_active %}active{% endblock %}
 
+{% block header %}
+    <link rel="stylesheet" href="/static/blog.css">
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -12,10 +16,13 @@
                     <div class="panel panel-heading">{{ data.type_name }}（一共有{{ blog.count }}篇文章）<br></div>
                     <div class="panel panel-body">
                         {% for i in blog.all %}
+                            <div class="pull-right">
+                                <img src="{{ i.image.url }}" class="img-responsive center-block" id="blog_image">
+                            </div>
                             <h2><a href="../{{ i.id }}">{{ i.title }}</a></h2>
                             作者：{{ i.author }}<br>
                             发表日期：{{ i.create_time }}<br>
-                            内容：{{ i.short_content|safe }}<br>
+                            {{ i.short_content|safe }}<br>
                             <hr>
                         {% endfor %}
 
