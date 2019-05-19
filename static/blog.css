@@ -21,6 +21,8 @@ a.back_previous{
     width: 80px;
 }
 
-span.detail-content{
-    text-indent: 2em;
+div#blog_image{
+    width:90px;
+    height: 45px;
+    margin-right: 4em;
 }

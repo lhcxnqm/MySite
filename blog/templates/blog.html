@@ -3,6 +3,10 @@
 {% block title %}博客页{% endblock %}
 {% block nav_blog_active %}active{% endblock %}
 
+{% block header %}
+    <link rel="stylesheet" href="/static/blog.css">
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -13,6 +17,9 @@
                     <div class="panel-heading">博客列表</div>
                     <div class="panel-body">
                         {% for blog in blogs.object_list %}
+                            <div class="pull-right" id="blog_image">
+                                <img src="/media/upload/2019/05/18/caixukun.jpg" class="img-responsive center-block">
+                            </div>
                             <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
                             <p>
                                 <span class="glyphicon glyphicon-tag"><a href="type/{{ blog.blog_type_id }}">{{ blog.blog_type }}</a></span>
@@ -21,7 +28,7 @@
                             </p>
                             {# 显示内容的一部分并通过safe使其显示后台编辑内容的真实排版，去除标签的显示 #}
                             {{ blog.short_content |safe }}
-                            <hr>
+                            <br><hr>
                         {% endfor %}
 
                         {#  分页的控制  #}

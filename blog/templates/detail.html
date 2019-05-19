@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
         {#    文章主题内容的显示#}
         <div class="panel panel-default">
             <div class="panel panel-heading" style="text-align: center">{{ data.title }}</div>
@@ -20,7 +20,7 @@
                     阅读数：{{ data.get_read_num }}
                 </center>
                 <hr>
-                <span class="detail-content">{{ data.content|safe }}</span>
+                <span class="text-center">{{ data.content|safe }}</span>
             </div>
         </div>
 
