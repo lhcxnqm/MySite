@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Comment
 from blog.models import Blog
 from django.contrib.contenttypes.models import ContentType
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -23,5 +24,9 @@ def update_comment(request):
     comment.content_type,comment.object_id=blogtype,object_id
     comment.save()
 
-    referer=request.META.get('HTTP_REFERER','/')    #地址重定向
-    return redirect(referer)
+    #返回数据
+    data={}
+    data['username']=comment.user.username
+    data['comment_time']=comment.comment_time.strftime('%Y-%m-%d %H:%M:%S')
+    data['text']=comment.text
+    return JsonResponse(data)

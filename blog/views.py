@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.db.models import Count
 from django.contrib.contenttypes.models import ContentType
 from MyStatistics.utils import read_statistics_once_read
+from comment.forms import CommentForm
 
 # Create your views here.
 def show(request):
@@ -25,8 +26,11 @@ def detail(request,blog_id):
     #获取评论相关信息
     blog_content_type=ContentType.objects.get_for_model(data)
     comments=Comment.objects.filter(content_type=blog_content_type,object_id=blog_id)
+    #设置评论区域的Form
+    comment_form=CommentForm(initial={'content_type':blog_content_type.model,'object_id':blog_id})
 
-    response=render(request,"detail.html",{'data':data,'comments':comments})    #响应
+    response=render(request,"detail.html",\
+                    {'data':data,'comments':comments,'comment_form':comment_form})    #响应
     response.set_cookie(read_cookie_key,'true')  #这里设置cookie，在关闭浏览器之前都存在
     return response
 

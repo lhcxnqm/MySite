@@ -26,3 +26,7 @@ img#blog_image{
     height: 100px;
     margin-right: 4em;
 }
+
+div.django-ckeditor-widget{
+    width:100%;
+}
