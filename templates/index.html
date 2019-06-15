@@ -8,8 +8,21 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="index-title">欢迎访问我的网站</h3>
 
+{#  中间横幅设置  #}
+    <div class="container-fluid" style="background-image:url(/media/barback.jpg);padding:50px 0px;background-size:cover">
+       <div class="container" style="color:#FFF">
+         <div class="col-md-4">
+           <img src="/media/TheOcean.jpg" alt="..." class="img-circle" style="height:200px;width:200px;padding:5px;border:2px solid #FFF">
+         </div>
+         <div class="col-md-8" style="padding-top:30px">
+           <p class="lead">“一起交流学习，不拘泥于形式，不用为了完成任务而熬夜，欢迎你们，一起学又能一起闹的小伙伴.”</p>
+           <p class="text-right" style="padding-top:30px;"><em>-----TheOcean<strong>林海潮</strong></em></p>
+         </div>
+       </div>
+   </div>
+
+    <br>
      <!-- 图表容器 DOM -->
     <div id="container" style="width: 600px;height:400px;"></div>
     <script>
@@ -35,5 +48,35 @@
         // 图表初始化函数
         var chart = Highcharts.chart('container', options);
     </script>
+
+    <br>
+    <footer class="footer foo container-fluid" style="background-color:rgb(24,24,24)">
+    <div class="container bigger" style="height:120px;;padding:40px 0 40px;margin-bottom:120px;background-color:rgb(24,24,24)">
+        <div class="row" style="background-color:rgb(24,24,24)">
+               <div class="col-md-4 text-left">
+                <p style="color:#FFF;font-size:25px;padding-bottom:8px;">联系我</p>
+                <ul class="list-unstyled" style="color:white">
+                  <li class="foot">Email：604587316@qq.com</li>
+                  <li class="foot">Phone：15558969071</li>
+                  <li class="foot">QQ/Wechat：604587316</li>
+                  <li class="foot">地址：浙江省温州市温州大学瓯江学院</li>
+                </ul>
+              </div>
+              <div class=" col-md-4 text-left">
+                <p style="color:#FFF;font-size:25px;padding-bottom:8px;">本站链接</p>
+                <ul style="color: white;font-size:15px;" class="list-unstyled">
+                  <li class="foot"><a href="/blog" class="foot-link">我的博客</a></li>
+                  <li class="foot"><a href="" class="foot-link">我的资料</a></li>
+                  <li class="foot"><a href="" class="foot-link">关于我</a></li>
+                  <li class="foot"><a href="" class="foot-link">关于网站</a></li>
+                </ul>
+              </div>
+              <div class="col-md-2" style="height: 150px;width: 180px;color: #FFF">
+                <img src="/media/Wechat.png" class="img-responsive">
+                  <br>&nbsp;扫下二维码，加我微信
+              </div>
+      </div>
+    </div>
+    </footer>
 
 {% endblock %}
