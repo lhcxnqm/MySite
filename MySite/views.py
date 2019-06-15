@@ -6,6 +6,13 @@ from django.contrib import auth
 from .forms import LoginForm,RegisterForm
 from django.contrib.auth.models import User
 
+#测试界面用的
+def test(request):
+    blog_content_type = ContentType.objects.get_for_model(Blog)
+    read_nums, dates = get_seven_days_read_data(blog_content_type)
+
+    return render(request, "test.html", {'read_nums': read_nums, 'dates': dates})
+
 #浏览量统计
 def mysite(request):
     blog_content_type=ContentType.objects.get_for_model(Blog)
