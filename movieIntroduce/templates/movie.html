@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}电影推荐{% endblock %}
+{% block nav_movie_active %}active{% endblock %}
+{% block header %}
+    <style>
+        .stroke{
+        color: transparent;
+        -webkit-text-stroke: 1px black;
+        letter-spacing: 0.04em;
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block content%}
+
+    <center><h1 class="stroke">豆瓣新片榜</h1></center>
+    <br>
+    {% for data in data.all %}
+        <table style="margin-left: 200px">
+            <tr>
+                <td rowspan="3" style="border:rosybrown solid 3px;">
+                    <img src="{{ data.image.url }}" height="150px">
+                </td>
+                <td style="font-size: 20px;font-weight: bold;">&nbsp;《{{ data.title }}》</td>
+            </tr>
+            <tr>
+                <td style="font-size: 15px;">&nbsp;&nbsp;简介：{{ data.short_introduce }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">&nbsp;&nbsp;<li class="glyphicon glyphicon-star"></li>{{ data.score }}分</td>
+            </tr>
+        </table>
+        <br>
+    {% endfor %}
+
+{% endblock %}

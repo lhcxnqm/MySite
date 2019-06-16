@@ -15,19 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-import blog.urls,comment.urls
+import blog.urls,comment.urls,movieIntroduce.urls
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-    path('blog/',include(blog.urls)),
     path('',views.mysite),
     #这是用来在后台编辑框内添加图片用的
     path('ckeditor',include('ckeditor_uploader.urls')),
+    path('blog/', include(blog.urls)),
     path('login/',views.login),
     path('register/',views.register),
     path('logout/',views.logout),
+    path('movie/',include(movieIntroduce.urls)),
     path('comment/',include(comment.urls)),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
