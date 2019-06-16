@@ -2,81 +2,281 @@
 
 {% block title %}主页{% endblock %}
 {% block nav_index_active %}active{% endblock %}
+
 {% block header %}
-    <link rel="stylesheet" href="/static/blog.css">
-    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="WordPress 5.2.1" />
+
+    <link rel='stylesheet' href='/static/global_css/owl.carousel.css'>
+    <link rel='stylesheet' href='/static/global_css/style.css'>
+
+    <script type="text/javascript" src="/static/global_js/highcharts.js"></script>
+
+    <script type="text/javascript">
+       $(function () {
+          $('#myTab a').hover(function () {
+            $(this).tab('show');
+          });
+        })
+    </script>
+
 {% endblock %}
 
 {% block content %}
 
-{#  中间横幅设置  #}
-    <div class="container-fluid" style="background-image:url(/media/barback.jpg);padding:50px 0px;background-size:cover">
-       <div class="container" style="color:#FFF">
-         <div class="col-md-4">
-           <img src="/media/TheOcean.jpg" alt="..." class="img-circle" style="height:200px;width:200px;padding:5px;border:2px solid #FFF">
-         </div>
-         <div class="col-md-8" style="padding-top:30px">
-           <p class="lead">“一起交流学习，不拘泥于形式，不用为了完成任务而熬夜，欢迎你们，一起学又能一起闹的小伙伴.”</p>
-           <p class="text-right" style="padding-top:30px;"><em>-----TheOcean<strong>林海潮</strong></em></p>
-         </div>
-       </div>
-   </div>
+    <div style="background: url(/media/background.jpg)">
+        <br>
+{#        图片轮播的展示#}
+        <section  class="slider">
+            <div class="container">
+                <div class="row">
+                    <div id="main-slider">
+                        <div class="col-sm-12">
+                            <div class="feature-area">
+                                <a href="/blog/2">
+                                    <div class="feature-description">
+                                        <h2>蔡徐坤粉丝毫无底线！</h2>
+                                        <span class="category-tag">休闲娱乐</span>
+                                        <div class="post-date">May 14, 2019</div>
+                                    </div>
+                                    <img src="/media/blog_images/caixukun.jpg" style="height:330px" class="lazyOwl" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="feature-area">
+                                <a href="/blog/6">
+                                    <div class="feature-description">
+                                        <h2>SKT国内粉丝疯狂的原因</h2>
+                                        <span class="category-tag">电子竞技</span>
+                                        <div class="post-date">May 15, 2019</div>
+                                    </div>
+                                    <img src="/media/blog_images/faker.jpg" style="height:330px" class="lazyOwl" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="feature-area">
+                                <a href="/blog/4">
+                                    <div class="feature-description">
+                                        <h2>Django母版页的优化</h2>
+                                        <span class="category-tag">教育频道</span>
+                                        <div class="post-date">May 15, 2019</div>
+                                    </div>
+                                    <img src="/media/blog_images/django_extends.JPG" style="height:330px" class="lazyOwl" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="feature-area">
+                                <a href="/blog/1">
+                                    <div class="feature-description">
+                                        <h2>蔡徐坤邀你打篮球</h2>
+                                        <span class="category-tag">休闲娱乐</span>
+                                        <div class="post-date">May 15, 2019</div>
+                                    </div>
+                                    <img src="/media/blog_images/kunkun.jpg" style="height:330px" class="lazyOwl" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <br>
-     <!-- 图表容器 DOM -->
-    <div id="container" style="width: 600px;height:400px;"></div>
-    <script>
-        var options = {
-            chart: {type: 'line'},
-            title:{text:''},
-            xAxis: {
-                categories: {{ dates|safe }},
-            },
-            yAxis: {
-                title: { text: '' }
-            },
-            series: [{                              // 数据列
-                name: '访问量统计',                        // 数据列名
-                data: {{ read_nums }}                    // 数据
-            }, ],
-            plotOptions:{
-                line:{
-                    dataLabels:{enabled:true}
-                }
-            }
-        };
-        // 图表初始化函数
-        var chart = Highcharts.chart('container', options);
-    </script>
-
-    <br>
-    <footer class="footer foo container-fluid" style="background-color:rgb(24,24,24)">
-        <div class="container bigger" style="height:120px;;padding:40px 0 40px;margin-bottom:120px;background-color:rgb(24,24,24)">
-            <div class="row" style="background-color:rgb(24,24,24)">
-                   <div class="col-md-4 text-left">
-                    <p style="color:#FFF;font-size:25px;padding-bottom:8px;">联系我</p>
-                    <ul class="list-unstyled" style="color:white">
-                      <li class="foot">Email：604587316@qq.com</li>
-                      <li class="foot">Phone：15558969071</li>
-                      <li class="foot">QQ/Wechat：604587316</li>
-                      <li class="foot">地址：浙江省温州市温州大学瓯江学院</li>
-                    </ul>
-                  </div>
-                  <div class=" col-md-4 text-left">
-                    <p style="color:#FFF;font-size:25px;padding-bottom:8px;">本站链接</p>
-                    <ul style="color: white;font-size:15px;" class="list-unstyled">
-                      <li class="foot"><a href="/blog" class="foot-link">我的博客</a></li>
-                      <li class="foot"><a href="" class="foot-link">我的资料</a></li>
-                      <li class="foot"><a href="" class="foot-link">关于我</a></li>
-                      <li class="foot"><a href="" class="foot-link">关于网站</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-2" style="height: 150px;width: 180px;color: #FFF">
-                    <img src="/media/Wechat.png" class="img-responsive">
-                      <br>&nbsp;扫下二维码，加我微信
-                  </div>
-          </div>
+        <div class="container">
+            <img src="/media/barback.jpg" style="width: 1200px;height: 120px;">
         </div>
-    </footer>
+
+        <br>
+{#      左边文章的显示#}
+        <div id="content" class="site-content">
+            <div class="container">
+			    <div class="row">
+					<div id="primary" class="content-area col-sm-8 col-md-8 col-xs-12 right-s-bar ">
+		                <main id="main" class="site-main" role="main">
+                            <article id="post-199" class="boxed post-199 post type-post status-publish format-audio has-post-thumbnail hentry category-latest post_format-post-format-audio">
+	                            <div class="post-wrapper">
+                                    <div class="post-content-wrapper">
+                                        <div class="post-header">
+			                                <time>
+                                                <div class="entry-meta">
+								                    <span class="posted-on">
+                                                        <a rel="bookmark">
+                                                            <time class="entry-date published updated" datetime="2017-11-28T15:15:26+00:00">May 14, 2019</time>
+                                                        </a>
+                                                    </span>
+                                                    <span class="byline"> by
+                                                        <span class="author vcard">
+                                                            <a class="url fn n" >democanyon</a>
+                                                        </span>
+                                                    </span>
+                                                </div>
+									        </time>
+			                                <span class="post-tag"></span>
+			                                <span class="post-category">
+			    	                            <a >Time</a>
+                                            </span>
+			                            </div>
+
+                                        <div class="post-title">
+                                            <h2 class="entry-title">
+                                                <a rel="bookmark">小站简介</a>
+                                            </h2>
+                                        </div>
+                                        <div class="post-content">
+                                            <p>“一起交流学习，不拘泥于形式，不用为了完成任务而熬夜，欢迎你们，一起学又能一起闹的小伙伴.”</p>
+                                        </div>
+                                        <div class="post-footer">
+                                            <div class="post-footer-right">
+                                                <span><i class="fa fa-commenting-o"></i> 0
+                                                    <a>Comments</a>
+                                                </span>
+                                            </div>
+                                            <a class="btn btn-more">
+                                                Reading
+                                            </a>
+                                        </div>
+                                    </div>
+	                            </div>
+                            </article>
+
+                    <!-- 图表容器 DOM -->
+                            <center><div id="container" style="width: 600px;height:400px;"></div></center>
+                            <script>
+                                var options = {
+                                    chart: {type: 'line'},
+                                    title:{text:''},
+                                    xAxis: {
+                                        categories: {{ dates|safe }},
+                                    },
+                                    yAxis: {
+                                        title: { text: '' }
+                                    },
+                                    series: [{                              // 数据列
+                                        name: '访问量统计',                        // 数据列名
+                                        data: {{ read_nums }}                    // 数据
+                                    }, ],
+                                    plotOptions:{
+                                        line:{
+                                            dataLabels:{enabled:true}
+                                        }
+                                    }
+                                };
+                                // 图表初始化函数
+                                var chart = Highcharts.chart('container', options);
+                            </script>
+                            <br>
+
+		                </main>
+	                </div>
+
+{#                    右边栏目布局#}
+                <aside id="secondary" class="col-sm-4 col-md-4 widget-area left-s-bar" role="complementary">
+    {#                    右边栏目个人信息#}
+	              <section  class="widget author-widget">
+                    <figure class="author">
+                      <img src="/media/TheOcean.jpg">
+                    </figure>
+                    <h2 class="widget-title"><span>The Ocean</span></h2>
+                    <p>Welcome to My Site</p>
+                    <ul class="socials">
+                        <li>
+                            <a href="https://github.com/lhcxnqm" target="_blank" title="Github：github.com/lhcxnqm"><i class="fa fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="QQ：604587316"><i class="fa fa-qq"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Weibo:18867741831"><i class="fa fa-weibo"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Wechat:604587316"><i class="fa fa-weixin"></i></a>
+                        </li>
+                     </ul>
+                  </section>
+
+    {#                    右边栏目博文分类#}
+                  <section id="categories-2" class="widget widget_categories">
+                      <h2 class="widget-title"><span>博文分类</span></h2>
+                      <ul class="nav">
+                        <li class="cat-item cat-item-15" role="presentation">
+                            <a href="/blog/type/1">娱乐休闲</a>
+                        </li>
+                        <li class="cat-item cat-item-16" role="presentation">
+                            <a href="/blog/type/2">教育学习</a>
+                        </li>
+                        <li class="cat-item cat-item-17" role="presentation">
+                            <a href="/blog/type/3">电子竞技</a>
+                        </li>
+                      </ul>
+                  </section>
+
+    {#                    右边栏目热门文章#}
+                  <section id="ezy-featured-post-2" class="widget ezy-featured-post">
+                    <h2 class="widget-title"><span>热门文章</span></h2>
+
+                    {#  这里准备循环生成  #}
+                    <section class="featured-posts-block">
+                        <div class="featured-post-thumbnai">
+                            <a href="">
+                                <img width="150" height="150" class="attachment-thumbnail size-thumbnail wp-post-image" srcset="/media/blog_images/kunkun.jpg 100w" sizes="(max-width: 150px) 100vw, 150px">
+                            </a>
+                        </div>
+                        <div class="featured-post-content">
+                            <div class="featured-post-title">
+                                <a href="">蔡徐坤粉丝狂欢</a>
+                            </div>
+                            <span class="entry-date"><i class="fa fa-clock-o"></i>May 14, 2019</span>
+                            <br><span>浏览次数：20</span>
+                            <br><span>评论数：10</span>
+                        </div>
+                    </section>
+                  </section>
+                </aside>
+
+    		    </div>
+		    </div>
+	    </div>
+
+    </div>
+
+{#        底部设置#}
+    	<footer class="footer foo container-fluid" style="background-color:rgb(120,120,120)">
+            <div class="container bigger" style="height:80px;padding:5px 0px 5px;margin-bottom:70px;background-color:rgb(120,120,120)">
+                <div class="row" style="background-color:rgb(120,120,120)">
+                       <div class="col-md-4 text-left">
+                        <p style="color:#FFF;font-size:25px;padding-bottom:8px;">联系我</p>
+                        <ul class="list-unstyled" style="color:white">
+                          <li class="foot">Email：604587316@qq.com</li>
+                          <li class="foot">Phone：15558969071</li>
+                          <li class="foot">QQ/Wechat：604587316</li>
+                          <li class="foot">地址：浙江省温州市温州大学瓯江学院</li>
+                        </ul>
+                      </div>
+                      <div class=" col-md-4 text-left">
+                        <p style="color:#FFF;font-size:25px;padding-bottom:8px;">本站链接</p>
+                        <ul style="color: white;font-size:15px;" class="list-unstyled">
+                          <li class="foot"><a href="/blog" class="foot-link">我的博客</a></li>
+                          <li class="foot"><a href="" class="foot-link">我的资料</a></li>
+                          <li class="foot"><a href="" class="foot-link">关于网站</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-2" style="height: 150px;width: 180px;color: #FFF">
+                        <img src="/media/Wechat.png" class="img-responsive">
+                          &nbsp;扫二维码，加我微信
+                      </div>
+                </div>
+                <a id="toTop" href="#" class="scrolltop activetop" title="Go to Top" style="display: block;">
+                    <i class="fa fa-angle-double-up"></i>
+                </a>
+            </div>
+        </footer>
+
+    {% block bottom %}
+            <script type="text/javascript" src="/static/global_js/owl.carousel.min.js"></script>
+            <script type="text/javascript" src="/static/global_js/scripts.js"></script>
+
+    {% endblock %}
 
 {% endblock %}

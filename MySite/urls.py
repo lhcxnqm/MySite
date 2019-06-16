@@ -22,9 +22,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-
-    path('test/',views.test),
-
     path('blog/',include(blog.urls)),
     path('',views.mysite),
     #这是用来在后台编辑框内添加图片用的
