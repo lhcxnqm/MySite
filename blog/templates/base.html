@@ -12,7 +12,7 @@
     <div class="navbar-default" role="navigation" style="background-color: #563b42">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" style="color: #f18e26">海潮之家</a>
+                <a class="navbar-brand" style="color: #f18e26">Sites</a>
                 {# 下拉列表的导航窗格，当浏览屏幕变小时出现 #}
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
@@ -32,7 +32,7 @@
                     <li class="{% block nav_ing_active %}{% endblock %}"><a href="/" style="color: #f18e26;">开发ing</a></li>
                 </ul>
                 {#                登录注册按钮的显示#}
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right nav-tabs">
                     {% if not user.is_authenticated %}
                         <li class="{% block nav_login_active %}{% endblock %}"><a href="/login?from={{ request.get_full_path }}" class="fa fa-power-off" style="color: #f18e26">登录</a></li>
                         <li class="{% block nav_register_active %}{% endblock %}"><a href="/register?from={{ request.get_full_path }}" class="fa fa-user-plus" style="color: #f18e26">注册</a></li>
