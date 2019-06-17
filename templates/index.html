@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="row">
                     <div id="main-slider">
-                        {% for blog in blog_list %}
+                        {% for blog in blog_list_time %}
                             <div class="col-sm-12">
                                 <div class="feature-area">
                                     <a href="/blog/{{ blog.id }}">
@@ -163,16 +163,17 @@
 
     {#                    右边栏目文章#}
                   <section id="ezy-featured-post-2" class="widget ezy-featured-post">
-                    <h2 class="widget-title"><span>新篇推荐</span></h2>
+                    <h2 class="widget-title"><span>热门文章</span></h2>
 
                 {#  这里准备循环生成  #}
                     {% for blog in blog_list %}
                         {% if forloop.counter > 3 %}
+                            {{ break }}
                         {% else %}
                             <section class="featured-posts-block">
                                     <div class="featured-post-thumbnai">
                                         <a href="/blog/{{ blog.id }}">
-                                            <img width="150" height="150" srcset="{{ blog.image.url }}" >
+                                            <img width="150" height="300" srcset="{{ blog.image.url }}" >
                                         </a>
                                     </div>
                                     <div class="featured-post-content">

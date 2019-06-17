@@ -15,14 +15,23 @@ def mysite(request):
     #博文分类
     blog_type = BlogType.objects
 
-    #头条滚动栏博客，显示前四篇热门文章，按照浏览量排序
-    blog_list = Blog.objects.all()[:5]
+    #显示前三篇热门文章，按照浏览量排序
+    blog_list = list(Blog.objects.all())
+    for i in range(len(blog_list)-1):
+        for j in range(i,len(blog_list)-i-1):
+            if blog_list[i].get_read_num() < blog_list[j].get_read_num():
+                blog_list[i],blog_list[j] = blog_list[j],blog_list[i]
+
+    #按照时间排序获得头条滚动栏博客展示，显示5篇
+    blog_list_time = Blog.objects.all()[:5]
 
     data = {}
     data['read_nums'] = read_nums
     data['dates'] = dates
     data['blog_type'] = blog_type
     data['blog_list'] = blog_list
+    data['blog_list_time'] = blog_list_time
+
     return render(request,"index.html",data)
 
 #登录处理
