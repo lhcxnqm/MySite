@@ -28,7 +28,7 @@
                     <li class="{% block nav_index_active %}{% endblock %}"><a href="/" style="color: #f18e26;">首页</a></li>
                     <li class="{% block nav_blog_active %}{% endblock %}"><a href="/blog" style="color: #f18e26;">博客</a></li>
                     <li class="{% block nav_movie_active %}{% endblock %}"><a href="/movie" style="color: #f18e26;">电影推荐</a></li>
-                    <li class="{% block nav_12306_active %}{% endblock %}"><a href="/" style="color: #f18e26;">12306登录</a></li>
+                    <li class="{% block nav_12306_active %}{% endblock %}"><a href="/the12306" style="color: #f18e26;">12306登录</a></li>
                     <li class="{% block nav_about_active %}{% endblock %}"><a href="/" style="color: #f18e26;">关于网站</a></li>
                     <li class="{% block nav_ing_active %}{% endblock %}"><a href="/" style="color: #f18e26;">开发ing</a></li>
                 </ul>
@@ -41,7 +41,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="color: #f18e26">欢迎你，{{ user.username }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/admin" style="color: #f18e26">博客修改（仅限管理员）</a></li>
+                            <li><a href="/admin" style="color: #f18e26">后台管理（仅限管理员）</a></li>
                             <li class="divider" role="separator"></li>
                             <li><a href="/logout?from={{ request.get_full_path }}" style="color: #f18e26">退出</a></li>
                         </ul>

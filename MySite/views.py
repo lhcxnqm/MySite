@@ -5,6 +5,7 @@ from blog.models import Blog,BlogType
 from django.contrib import auth
 from .forms import LoginForm,RegisterForm
 from django.contrib.auth.models import User
+from . import autologin
 
 #主页控制
 def mysite(request):
@@ -70,3 +71,10 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect(request.GET.get('from'))
+
+def the12306(request):
+    if request.method == 'POST':
+        start = autologin.Demo()
+        start()
+
+    return render(request,'12306.html')

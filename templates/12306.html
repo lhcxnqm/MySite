@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}12306登录{% endblock %}
+{% block nav_12306_active %}active{% endblock %}
+
+{% block content %}
+    <center>
+        <h1>准备进行12306登录</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Start" name="ready">
+        </form>
+        <br>
+    </center>
+{% endblock %}

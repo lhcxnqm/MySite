@@ -22,13 +22,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/',admin.site.urls),
+    #通用路由
     path('',views.mysite),
-    #这是用来在后台编辑框内添加图片用的
-    path('ckeditor',include('ckeditor_uploader.urls')),
-    path('blog/', include(blog.urls)),
     path('login/',views.login),
     path('register/',views.register),
     path('logout/',views.logout),
+    path('the12306/',views.the12306),
+    #博客路由
+    path('blog/', include(blog.urls)),
+    #电影推荐路由
     path('movie/',include(movieIntroduce.urls)),
+    #这是用来在后台编辑框内添加图片路由
+    path('ckeditor',include('ckeditor_uploader.urls')),
+    #评论处理
     path('comment/',include(comment.urls)),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
