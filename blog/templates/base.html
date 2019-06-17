@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
     {% block header %}{% endblock %}
 </head>
+
 <body background="/media/background.jpg">
 {#        导航栏的设置#}
     <div class="navbar-default" role="navigation" style="background-color: #563b42">
@@ -55,6 +56,10 @@
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     <!-- 这是用来放js文件的 -->
     {% block bottom %}{% endblock %}
+
+    <a id="toTop" href="#" class="scrolltop activetop" title="Go to Top" style="display: block;">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
 
     <!--下面是用来写内容的-->
     {% block content %}{% endblock %}

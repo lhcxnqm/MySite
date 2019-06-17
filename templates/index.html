@@ -4,82 +4,34 @@
 {% block nav_index_active %}active{% endblock %}
 
 {% block header %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="WordPress 5.2.1" />
-
     <link rel='stylesheet' href='/static/global_css/owl.carousel.css'>
     <link rel='stylesheet' href='/static/global_css/style.css'>
-
     <script type="text/javascript" src="/static/global_js/highcharts.js"></script>
-
-    <script type="text/javascript">
-       $(function () {
-          $('#myTab a').hover(function () {
-            $(this).tab('show');
-          });
-        })
-    </script>
-
 {% endblock %}
 
 {% block content %}
 
     <div style="background: url(/media/background.jpg)">
         <br>
-
 {#        图片轮播的展示#}
         <section  class="slider">
             <div class="container">
                 <div class="row">
                     <div id="main-slider">
-                        <div class="col-sm-12">
-                            <div class="feature-area">
-                                <a href="/blog/2">
-                                    <div class="feature-description">
-                                        <h2>蔡徐坤粉丝毫无底线！</h2>
-                                        <span class="category-tag">休闲娱乐</span>
-                                        <div class="post-date">May 14, 2019</div>
-                                    </div>
-                                    <img src="/media/blog_images/caixukun.jpg" style="height:330px" class="lazyOwl" alt="">
-                                </a>
+                        {% for blog in blog_list %}
+                            <div class="col-sm-12">
+                                <div class="feature-area">
+                                    <a href="/blog/{{ blog.id }}">
+                                        <div class="feature-description">
+                                            <h2>{{ blog.title }}</h2>
+                                            <span class="category-tag">{{ blog.blog_type }}</span>
+                                            <div class="post-date"><li class="glyphicon glyphicon-time"></li>{{ blog.create_time }}</div>
+                                        </div>
+                                        <img src="{{ blog.image.url }}" style="height:330px" class="lazyOwl" alt="">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="feature-area">
-                                <a href="/blog/6">
-                                    <div class="feature-description">
-                                        <h2>SKT国内粉丝疯狂的原因</h2>
-                                        <span class="category-tag">电子竞技</span>
-                                        <div class="post-date">May 15, 2019</div>
-                                    </div>
-                                    <img src="/media/blog_images/faker.jpg" style="height:330px" class="lazyOwl" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="feature-area">
-                                <a href="/blog/4">
-                                    <div class="feature-description">
-                                        <h2>Django母版页的优化</h2>
-                                        <span class="category-tag">教育频道</span>
-                                        <div class="post-date">May 15, 2019</div>
-                                    </div>
-                                    <img src="/media/blog_images/django_extends.JPG" style="height:330px" class="lazyOwl" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="feature-area">
-                                <a href="/blog/1">
-                                    <div class="feature-description">
-                                        <h2>蔡徐坤邀你打篮球</h2>
-                                        <span class="category-tag">休闲娱乐</span>
-                                        <div class="post-date">May 15, 2019</div>
-                                    </div>
-                                    <img src="/media/blog_images/kunkun.jpg" style="height:330px" class="lazyOwl" alt="">
-                                </a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -201,38 +153,39 @@
                   <section id="categories-2" class="widget widget_categories">
                       <h2 class="widget-title"><span>博文分类</span></h2>
                       <ul class="nav">
-                        <li class="cat-item cat-item-15" role="presentation">
-                            <a href="/blog/type/1">娱乐休闲</a>
-                        </li>
-                        <li class="cat-item cat-item-16" role="presentation">
-                            <a href="/blog/type/2">教育学习</a>
-                        </li>
-                        <li class="cat-item cat-item-17" role="presentation">
-                            <a href="/blog/type/3">电子竞技</a>
-                        </li>
+                        {% for blogtype in blog_type.all %}
+                            <li class="cat-item cat-item-15" role="presentation">
+                                <a href="/blog/type/{{ blogtype.id }}">{{ blogtype.type_name }}</a>
+                            </li>
+                        {% endfor %}
                       </ul>
                   </section>
 
-    {#                    右边栏目热门文章#}
+    {#                    右边栏目文章#}
                   <section id="ezy-featured-post-2" class="widget ezy-featured-post">
-                    <h2 class="widget-title"><span>热门文章</span></h2>
+                    <h2 class="widget-title"><span>新篇推荐</span></h2>
 
-                    {#  这里准备循环生成  #}
-                    <section class="featured-posts-block">
-                        <div class="featured-post-thumbnai">
-                            <a href="">
-                                <img width="150" height="150" class="attachment-thumbnail size-thumbnail wp-post-image" srcset="/media/blog_images/kunkun.jpg 100w" sizes="(max-width: 150px) 100vw, 150px">
-                            </a>
-                        </div>
-                        <div class="featured-post-content">
-                            <div class="featured-post-title">
-                                <a href="">蔡徐坤粉丝狂欢</a>
-                            </div>
-                            <span class="entry-date"><i class="fa fa-clock-o"></i>May 14, 2019</span>
-                            <br><span>浏览次数：20</span>
-                            <br><span>评论数：10</span>
-                        </div>
-                    </section>
+                {#  这里准备循环生成  #}
+                    {% for blog in blog_list %}
+                        {% if forloop.counter > 3 %}
+                        {% else %}
+                            <section class="featured-posts-block">
+                                    <div class="featured-post-thumbnai">
+                                        <a href="/blog/{{ blog.id }}">
+                                            <img width="150" height="150" srcset="{{ blog.image.url }}" >
+                                        </a>
+                                    </div>
+                                    <div class="featured-post-content">
+                                        <div class="featured-post-title">
+                                            <a href="/blog/{{ blog.id }}">{{ blog.title }}</a>
+                                        </div>
+                                        <span class="entry-date"><i class="fa fa-clock-o"></i>{{ blog.create_time }}</span>
+                                        <br><span class="fa fa-eye">{{ blog.get_read_num }}浏览</span>
+                                    </div>
+                            </section>
+                        {% endif %}
+                    {% endfor %}
+
                   </section>
                 </aside>
 
@@ -268,16 +221,13 @@
                           &nbsp;扫二维码，加我微信
                       </div>
                 </div>
-                <a id="toTop" href="#" class="scrolltop activetop" title="Go to Top" style="display: block;">
-                    <i class="fa fa-angle-double-up"></i>
-                </a>
+
             </div>
         </footer>
 
-    {% block bottom %}
-            <script type="text/javascript" src="/static/global_js/owl.carousel.min.js"></script>
-            <script type="text/javascript" src="/static/global_js/scripts.js"></script>
+{% endblock %}
 
-    {% endblock %}
-
+{% block bottom %}
+    <script type="text/javascript" src="/static/global_js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/static/global_js/scripts.js"></script>
 {% endblock %}
