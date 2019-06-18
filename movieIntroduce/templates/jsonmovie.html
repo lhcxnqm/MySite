@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Json影评{% endblock %}
+{% block nav_jsonmovie_active %}{% endblock %}
+
+{% block header %}
+    <style>
+        text.list-time{
+        position: absolute;
+        background-color: #000000;
+        opacity: .15%;
+        font-size: 16px;
+        line-height: 22px;
+        padding: 0 5px;
+        left: 5px;
+        bottom: 5px;
+        border-radius: 12px;
+        border-style: solid;
+    }
+        .list-time:hover{
+            cursor: hand;
+            background:#F00;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <main role="main">
+      <div>
+        <div class="container">
+          <div class="row">
+              {% for data in datas.object_list %}
+                    <div class="col-xs-3">
+                      <div>
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225">
+                            <title>影评</title>
+                            <rect width="80%" height="100%" fill="none" ></rect>
+                            <image height="200" href="/media/{{ data.image }}"></image>
+                            <text x="5%" y="80%" fill="#eceeef" dy=".3em" class="list-time">{{ data.period }}</text>
+                        </svg>
+                        <div class="card-body">
+                          <p class="card-text">{{ data.title }}</p>
+                        </div>
+                      </div>
+                    </div>
+              {% endfor %}
+          </div>
+
+            {#  分页的控制  #}
+            <div style="text-align: center">
+              <ul class="pagination">
+                <li>
+                    {% if datas.has_previous %}
+                        <a href="?page={{ datas.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+                {% for page_num in datas.paginator.page_range %}
+                    {% if page_num == datas.number %}
+                        <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                    {% else %}
+                        <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li>
+                    {% if datas.has_next %}
+                        <a href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+              </ul>
+            <p>一共有{{ datas.paginator.count }}篇文章，当前第{{ datas.number }}页，共{{ datas.paginator.num_pages }}页</p>
+            </div>
+
+        </div>
+      </div>
+    </main>
+
+{% endblock %}

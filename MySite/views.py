@@ -72,6 +72,7 @@ def logout(request):
     auth.logout(request)
     return redirect(request.GET.get('from'))
 
+#登录12306
 def the12306(request):
     if request.method == 'POST':
         start = autologin.Demo()
