@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     #第三方库
     'ckeditor',
     'ckeditor_uploader',
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'comment',
     'movieIntroduce'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

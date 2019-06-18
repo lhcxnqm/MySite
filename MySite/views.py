@@ -3,9 +3,9 @@ from MyStatistics.utils import get_seven_days_read_data
 from django.contrib.contenttypes.models import ContentType
 from blog.models import Blog,BlogType
 from django.contrib import auth
-from .forms import LoginForm,RegisterForm
+from MySite.forms import LoginForm,RegisterForm
 from django.contrib.auth.models import User
-from . import autologin
+from MySite import autologin
 
 #主页控制
 def mysite(request):

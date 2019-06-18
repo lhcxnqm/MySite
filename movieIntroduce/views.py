@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from . import crawmovie,getjsondata
-from .models import GoodMovie,JsonMovie
+#from . import crawmovie,getjsondata
+from movieIntroduce.models import GoodMovie,JsonMovie
 from django.core.paginator import Paginator
 
 # Create your views here.

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Comment
+from comment.models import Comment
 from blog.models import Blog
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
