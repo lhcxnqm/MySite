@@ -8,7 +8,7 @@
 <br>
 * 博客分类、内容分页、最新文章轮播
 * 文章评论(Ajax异步提交)
-(https://github.com/lhcxnqm/MySite/blob/master/otherutils/save_picture/comment.JPG)
+![image](https://github.com/lhcxnqm/MySite/raw/master/otherutils/save_picture/comment.JPG)
 <br>
 * 访问统计(HighCharts图表展示)、热门文章推荐(ContentType关联)
 * 豆瓣新片推荐（静态爬取）
