@@ -7,7 +7,7 @@
     <style>
         text.list-time{
         position: absolute;
-        background-color: #000000;
+        background-color: #f1f1f1;
         opacity: .15%;
         font-size: 16px;
         line-height: 22px;
@@ -19,7 +19,7 @@
     }
         .list-time:hover{
             cursor: hand;
-            background:#F00;
+            background:#5a7ec8;
         }
     </style>
 {% endblock %}
@@ -33,11 +33,11 @@
               {% for data in datas.object_list %}
                     <div class="col-xs-3">
                       <div>
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="100">
                             <title>影评</title>
-                            <rect width="80%" height="100%" fill="none" ></rect>
-                            <image height="200" href="/media/{{ data.image }}"></image>
-                            <text x="5%" y="80%" fill="#eceeef" dy=".3em" class="list-time">{{ data.period }}</text>
+{#                            <rect width="80%" height="100%" fill="none" ></rect>#}
+                            <img width="250" height="160" src="{{ data.image.url }}">
+                            <text style="position: absolute;margin-bottom: 20%;margin-left: 5%" fill="#eceeef" dy=".3em" class="list-time">{{ data.period }}</text>
                         </svg>
                         <div class="card-body">
                           <p class="card-text">{{ data.title }}</p>
