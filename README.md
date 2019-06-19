@@ -4,9 +4,12 @@
 
 #### 已添加功能
 * 用户登录、注册、注销;管理员后台管理(加入富文本编辑)
-![image](https://github.com/lhcxnqm/MySite/otherutils/save_picture/ckeditor.JPG)
+![image](https://github.com/lhcxnqm/MySite/blob/master/otherutils/save_picture/ckeditor.JPG)
+<br>
 * 博客分类、内容分页、最新文章轮播
 * 文章评论(Ajax异步提交)
+(https://github.com/lhcxnqm/MySite/blob/master/otherutils/save_picture/comment.JPG)
+<br>
 * 访问统计(HighCharts图表展示)、热门文章推荐(ContentType关联)
 * 豆瓣新片推荐（静态爬取）
 * 1905网"今日影评"获取（Json解析）
