@@ -4,7 +4,7 @@
 
 #### 已添加功能
 * 用户登录、注册、注销;管理员后台管理(加入富文本编辑)
-![image](https://github.com/lhcxnqm/MySite/blob/master/otherutils/save_picture/editor.JPG)
+![image](https://github.com/lhcxnqm/MySite/blob/master/otherutils/save_picture/ckeditor.JPG)
 <br>
 * 博客分类、内容分页、最新文章轮播
 * 文章评论(Ajax异步提交)
