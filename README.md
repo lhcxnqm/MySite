@@ -1,5 +1,6 @@
 # MySite
-基于Django的个人博客
+基于Django的个人博客<br>
+47.98.223.64:8989 快过期了，Hold不住啊~~
 
 #### 已添加功能
 * 用户登录、注册、注销;管理员后台管理
@@ -13,16 +14,6 @@
 
 #### Tips
 * 合理套用母版页，减少代码量<br>
-示例：<br>
-{% extends "base.html" %}
-
-{% block title %}错误提示{% endblock %}
-{% block nav_blog_active %}active{% endblock %}
-
-{% block content %}
-    {{ message }}
-{% endblock %}
-
 * 界面通过BootStrap美化
 * 运用HighCharts工具进行数据图表化
 * 小图标使用font-awesome样式
