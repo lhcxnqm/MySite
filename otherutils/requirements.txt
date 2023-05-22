@@ -3,5 +3,5 @@ Pillow==6.0.0
 beautifulsoup4==4.6.3
 django-ckeditor==5.7.1
 django-js-asset==1.2.2
-requests==2.19.1
+requests==2.31.0
 selenium==3.141.0
